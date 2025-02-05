@@ -25,7 +25,9 @@ mongoose
 app.use("/api/articles", articleRoutes);
 app.use("/api/customers", customerRoutes);
 app.use("/api/sales", salesRoutes);
-
+app.use("/",()=>{
+  Abdullah
+})
 app.listen(3000, () => {
   console.log("Server is running on port 3000");
 });
