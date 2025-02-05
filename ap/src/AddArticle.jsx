@@ -9,7 +9,7 @@ const AddArticle = () => {
   useEffect(() => {
     const fetchArticles = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/articles/submit');
+        const response = await axios.get('https://full-stack-web-zlhp.vercel.app/api/articles/submit');
         setArticles(response.data);
       } catch (err) {
         setError('Error fetching articles: ' + err.message);
