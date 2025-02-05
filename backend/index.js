@@ -28,9 +28,9 @@ app.use("/api/sales", salesRoutes);
 
 // Basic Route
 app.get("/", (req, res) => {
-  res.send("Abdullah");
+  true,
 });
-
+ 
 app.listen(8000, () => {
   console.log("Server is running on port 8000");
 });
