@@ -12,7 +12,7 @@ const SellArticle = () => {
   const [totalProfitLoss, setTotalProfitLoss] = useState(0);
 
   useEffect(() => {
-    axios.get("http://localhost:3000/api/articles/submit")
+    axios.get("https://full-stack-web-lk2e.vercel.app/api/articles/submit")
       .then((response) => {
         setArticles(response.data);
         if (response.data.length > 0) {
@@ -21,7 +21,7 @@ const SellArticle = () => {
       })
       .catch((error) => console.error("Error fetching articles:", error));
 
-    axios.get("http://localhost:3000/api/customers")
+    axios.get("https://full-stack-web-lk2e.vercel.app/api/customers")
       .then((response) => {
         setCustomers(response.data);
         if (response.data.length > 0) {
@@ -30,7 +30,7 @@ const SellArticle = () => {
       })
       .catch((error) => console.error("Error fetching customers:", error));
 
-    axios.get("http://localhost:3000/api/sales/list")
+    axios.get("https://full-stack-web-lk2e.vercel.app/api/sales/list")
       .then((response) => {
         setSalesList(response.data);
         setTotalProfitLoss(response.data.reduce((acc, sale) => acc + sale.totalProfitLoss, 0));
@@ -62,11 +62,11 @@ const SellArticle = () => {
     const profitLoss = (sellPrice - article.cost) * sellQuantity;
 
     try {
-      await axios.patch(`http://localhost:3000/api/articles/update/${article._id}`, {
+      await axios.patch(`https://full-stack-web-lk2e.vercel.app/api/articles/update/${article._id}`, {
         quantity: article.quantity - sellQuantity,
       });
 
-      const saleResponse = await axios.post("http://localhost:3000/api/sales/add", {
+      const saleResponse = await axios.post("https://full-stack-web-lk2e.vercel.app/api/sales/add", {
         articleId: article._id,
         customerId: customer._id,
         quantity: sellQuantity,

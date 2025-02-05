@@ -6,7 +6,7 @@ const ProfitLoss = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/sales/list")
+      .get("https://full-stack-web-lk2e.vercel.app/api/sales/list")
       .then((response) => {
         const total = response.data.reduce((acc, sale) => acc + sale.totalProfitLoss, 0);
         setTotalProfitLoss(total);

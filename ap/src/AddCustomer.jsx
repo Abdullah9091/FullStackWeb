@@ -13,7 +13,7 @@ const AddCustomer = () => {
   // Fetch customers from the backend
   const fetchCustomers = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/customers");
+      const response = await axios.get("https://full-stack-web-lk2e.vercel.app/api/customers");
       setCustomers(response.data);
     } catch (error) {
       console.error("Error fetching customers:", error);
@@ -29,7 +29,7 @@ const AddCustomer = () => {
     const name = e.target["customer-name"].value;
 
     try {
-      const response = await axios.post("http://localhost:3000/api/customers/add", { name });
+      const response = await axios.post("https://full-stack-web-lk2e.vercel.app/api/customers/add", { name });
       setCustomers((prevCustomers) => [...prevCustomers, response.data]);
       e.target.reset();
     } catch (error) {
