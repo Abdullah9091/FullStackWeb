@@ -11,7 +11,7 @@ const salesRoutes = require("./routes/routes");
 const app = express();
 app.use(cors(
   {
-    ""
+    "https://full-stack-web-lk2e.vercel.app/"
   }
 ));
 app.use(bodyParser.json());
