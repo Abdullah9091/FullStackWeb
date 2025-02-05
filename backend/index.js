@@ -9,7 +9,11 @@ const customerRoutes = require("./routes/customers");
 const salesRoutes = require("./routes/routes");
 
 const app = express();
-app.use(cors());
+app.use(cors(
+  {
+    ""
+  }
+));
 app.use(bodyParser.json());
 app.use("/uploads", express.static("uploads"));
 
