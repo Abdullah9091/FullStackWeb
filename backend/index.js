@@ -9,32 +9,39 @@ const customerRoutes = require("./routes/customers");
 const salesRoutes = require("./routes/routes");
 
 const app = express();
-app.use(cors(
-  {
-    "https://full-stack-web-lk2e.vercel.app/"
-  }
-));
+
+// ✅ Fix CORS Configuration
+app.use(cors({
+  origin: "https://full-stack-web-lk2e.vercel.app",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true
+}));
+
 app.use(bodyParser.json());
 app.use("/uploads", express.static("uploads"));
 
-// MongoDB connection using environment variable
+// ✅ MongoDB Connection (Fix Error Handling)
 mongoose
-  .connect(process.env.MONGO_URI)
+  .connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.error("MongoDB connection error:", err));
 
-console.log(process.env.MONGO_URI); // This will print the Mongo URI to the console
+// ✅ Print Mongo URI only if it exists
+if (process.env.MONGO_URI) {
+  console.log("MongoDB URI:", process.env.MONGO_URI);
+} else {
+  console.error("❌ MONGO_URI is missing in the environment variables!");
+}
 
-// Routes
+// ✅ Routes
 app.use("/api/articles", articleRoutes);
 app.use("/api/customers", customerRoutes);
 app.use("/api/sales", salesRoutes);
 
-// Basic Route
+// ✅ Fix Root Route
 app.get("/", (req, res) => {
-  true,
+  res.send("Server is running successfully!");
 });
- 
-app.listen(8000, () => {
-  console.log("Server is running on port 8000");
-});
+
+// ✅ Export for Vercel
+module.exports = app;
