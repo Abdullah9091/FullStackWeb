@@ -5,9 +5,9 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
-const articleRoutes = require("../routes/Articles");
-const customerRoutes = require("../routes/customers");
-const salesRoutes = require("../routes/routes");
+const articleRoutes = require("./routes/Articles");
+const customerRoutes = require("./routes/customers");
+const salesRoutes = require("./routes/routes");
 
 const app = express();
 app.use(cors());
@@ -24,7 +24,7 @@ mongoose
 app.use("/api/articles", articleRoutes);
 app.use("/api/customers", customerRoutes);
 app.use("/api/sales", salesRoutes);
-app.use
 
-// Export the app for Vercel serverless function
-module.exports = app;
+app.listen(3000, () => {
+  console.log("Server is running on port 3000");
+});
