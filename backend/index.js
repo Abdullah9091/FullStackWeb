@@ -29,6 +29,7 @@ mongoose
 // ✅ Print Mongo URI only if it exists
 if (process.env.MONGO_URI) {
   console.log("MongoDB URI:", process.env.MONGO_URI);
+  console.log("server connected")
 } else {
   console.error("❌ MONGO_URI is missing in the environment variables!");
 }
