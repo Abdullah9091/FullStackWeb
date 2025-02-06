@@ -9,7 +9,7 @@ const AddArticle = () => {
   useEffect(() => {
     const fetchArticles = async () => {
       try {
-        const response = await axios.get('https://full-stack-web-lk2e.vercel.app/api/articles/submit');
+        const response = await axios.get('https://full-stack-web-dks8.vercel.app/api/articles/submit');
         setArticles(response.data);
       } catch (err) {
         setError('Error fetching articles: ' + err.message);
@@ -29,7 +29,7 @@ const AddArticle = () => {
 
     try {
       // Make the API call to save the article
-      const response = await axios.post('https://full-stack-web-lk2e.vercel.app/api/articles/save', formData, {
+      const response = await axios.post('https://full-stack-web-dks8.vercel.app/api/articles/save', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -70,7 +70,7 @@ const AddArticle = () => {
           {articles.length > 0 ? (
             articles.map((article, index) => (
               <div key={index} className="article-item">
-                <img src={`https://full-stack-web-lk2e.vercel.app/${article.image}`} alt={article.name} />
+                <img src={`https://full-stack-web-dks8.vercel.app/${article.image}`} alt={article.name} />
                 <h4>{article.name}</h4>
                 <p>Cost: ₨{article.cost} | Quantity: {article.quantity}</p>
               </div>
