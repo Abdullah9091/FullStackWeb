@@ -13,6 +13,7 @@ const app = express();
 // ✅ Fix CORS Configuration
 app.use(cors({
   origin: "https://full-stack-web-lk2e.vercel.app",
+  
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true
 }));
